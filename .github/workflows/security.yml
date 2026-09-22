@@ -1,0 +1,50 @@
+---
+name: Security scans
+
+"on":
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  gitleaks:
+    name: Gitleaks secret scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  kingfisher:
+    name: Kingfisher secret scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Install Kingfisher
+        run: |
+          installer="https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh"
+          curl --silent --location "${installer}" | bash
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Run Kingfisher
+        run: kingfisher scan . --format sarif --output kingfisher-results.sarif
+      - name: Upload Kingfisher SARIF
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: kingfisher-results.sarif

@@ -1,14 +1,21 @@
 name: HACS Validation
 
-on:
+"on":
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions: {}
 
 jobs:
   validate-hacs:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v6
       - name: HACS Action
@@ -23,6 +30,8 @@ jobs:
 
   validate-hassfest:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v6
       - name: Hassfest

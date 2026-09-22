@@ -89,7 +89,7 @@ Solar inverters that bypass the battery can be curtailed during negative feed-in
 | **Globird / AEMO VPP** | Australia | Retail tariff schedule + AEMO spike detection |
 | **CovaU SolarMax** | Australia | Fixture-backed NSW, Queensland and South Australia stepped tariffs with measured daily free-import and premium-export quotas |
 | **Octopus Energy** | UK | Dynamic 30-min (Agile, Go, Intelligent Go, Flux, Tracker). Reads from [BottlecapDave's integration](https://github.com/BottlecapDave/HomeAssistant-OctopusEnergy) when installed |
-| **EPEX Day-Ahead** | EU (DE, AT, BE, NL, DK, SE) | Native 15-min day-ahead pricing for Belgium; hourly aggregation elsewhere, with configurable surcharge & tax |
+| **EPEX Day-Ahead** | EU (DE, AT, BE, FR, NL, DK, SE) | Native 15-min day-ahead pricing for Belgium and France; hourly aggregation elsewhere, with configurable surcharge & tax |
 | **NZ TOU** | New Zealand | Static TOU (Octopus NZ, Electric Kiwi, Contact Energy, Custom) |
 
 ---

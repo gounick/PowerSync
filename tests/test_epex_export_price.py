@@ -259,7 +259,7 @@ def test_epex_export_source_copy_explains_raw_wholesale_semantics():
         for description in descriptions:
             assert "EUR ct/kWh" in description
             assert "tax are excluded" in description
-            assert "modelled" in description
+            assert "configured market source" in description
 
 
 def test_epex_region_copy_lists_only_supported_zone_examples():
@@ -274,7 +274,7 @@ def test_epex_region_copy_lists_only_supported_zone_examples():
         ]
         assert descriptions
         for description in descriptions:
-            assert "FR" not in description
+            assert "FR" in description
             assert "DK1" in description
             assert "SE1-SE4" in description
 

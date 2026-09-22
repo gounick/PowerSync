@@ -5357,7 +5357,7 @@ class EPEXPriceCoordinator(DataUpdateCoordinator):
 
         Args:
             hass: HomeAssistant instance
-            region: EPEX bidding zone code (DE, AT, BE, NL, SE1-4, DK1-2)
+            region: EPEX bidding zone code (DE, AT, BE, FR, NL, SE1-4, DK1-2)
             session: aiohttp client session for API requests
             surcharge: Fixed surcharge in ct/kWh (network fees, levies)
             tax_percent: Tax percentage (e.g. 21 for Belgian VAT)

@@ -855,6 +855,7 @@ EPEX_REGIONS = {
     "DE": "Germany",
     "AT": "Austria",
     "BE": "Belgium",
+    "FR": "France",
     "NL": "Netherlands",
     "SE1": "Sweden (Zone 1)",
     "SE2": "Sweden (Zone 2)",

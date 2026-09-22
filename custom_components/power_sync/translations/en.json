@@ -264,7 +264,7 @@
       },
       "epex": {
         "title": "EPEX day-ahead pricing",
-        "description": "Configure European day-ahead pricing. Prices are sourced from ENTSO-E via the EPEX Predictor API (free, no account needed).",
+        "description": "Configure European day-ahead pricing. Prices are sourced from EPEX Predictor and Energy-Charts.info (free, no account needed).",
         "data": {
           "epex_region": "Bidding zone",
           "epex_surcharge": "Surcharge",
@@ -275,11 +275,11 @@
           "epex_export_price_entity": "Export price sensor"
         },
         "data_description": {
-          "epex_region": "Choose a supported EPEX bidding zone: DE, AT, BE, NL, DK1, DK2, or SE1-SE4.",
+          "epex_region": "Choose a supported EPEX bidding zone: DE, AT, BE, FR, NL, DK1, DK2, or SE1-SE4.",
           "epex_surcharge": "Fixed network fees, levies, and other charges in ct/kWh. Added to the wholesale price before tax.",
           "epex_tax_percent": "VAT percentage applied on top of the total price. Example: 21 for Belgium, 19 for Germany.",
           "epex_export_rate": "Fixed feed-in tariff in EUR ct/kWh. Used when Fixed export rate is selected; leave at 0 if unconfigured.",
-          "epex_export_source": "Choose Fixed export rate (the default), Raw EPEX wholesale forecast, or Custom export price sensor. Raw wholesale values are modelled EPEX Predictor EUR ct/kWh values: import surcharges, network fees, levies, and tax are excluded. Negative wholesale prices remain visible but do not create optimizer export revenue.",
+          "epex_export_source": "Choose Fixed export rate (the default), Raw EPEX wholesale forecast, or Custom export price sensor. Raw wholesale values are EUR ct/kWh values from the configured market source. Import surcharges, network fees, levies, and tax are excluded. Negative wholesale prices remain visible but do not create optimizer export revenue.",
           "epex_import_price_entity": "Optional Home Assistant sensor for actual import costs. Use ct/kWh or EUR/kWh; a price_values attribute can provide a forecast.",
           "epex_export_price_entity": "Optional Home Assistant sensor for actual export earnings. Use ct/kWh or EUR/kWh; a price_values attribute can provide a forecast."
         },
@@ -2306,10 +2306,10 @@
           "battery_curtailment_enabled": "Stop export below threshold"
         },
         "data_description": {
-          "epex_region": "Choose a supported EPEX bidding zone: DE, AT, BE, NL, DK1, DK2, or SE1-SE4.",
+          "epex_region": "Choose a supported EPEX bidding zone: DE, AT, BE, FR, NL, DK1, DK2, or SE1-SE4.",
           "epex_surcharge": "Fixed network fees, levies, and other charges in ct/kWh. Added to the wholesale price before tax.",
           "epex_tax_percent": "VAT percentage applied on top of the total price. Example: 21 for Belgium, 19 for Germany.",
-          "epex_export_source": "Choose Fixed export rate (the default), Raw EPEX wholesale forecast, or Custom export price sensor. Raw wholesale values are modelled EPEX Predictor EUR ct/kWh values: import surcharges, network fees, levies, and tax are excluded. Negative wholesale prices remain visible but do not create optimizer export revenue.",
+          "epex_export_source": "Choose Fixed export rate (the default), Raw EPEX wholesale forecast, or Custom export price sensor. Raw wholesale values are EUR ct/kWh values from the configured market source. Import surcharges, network fees, levies, and tax are excluded. Negative wholesale prices remain visible but do not create optimizer export revenue.",
           "epex_export_rate": "Fixed feed-in tariff in EUR ct/kWh. Used when Fixed export rate is selected; leave at 0 if unconfigured.",
           "epex_import_price_entity": "Optional Home Assistant sensor for actual import costs. Use ct/kWh or EUR/kWh; a price_values attribute can provide a forecast.",
           "epex_export_price_entity": "Optional Home Assistant sensor for actual export earnings. Use ct/kWh or EUR/kWh; a price_values attribute can provide a forecast.",
