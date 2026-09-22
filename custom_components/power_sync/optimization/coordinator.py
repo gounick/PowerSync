@@ -9398,6 +9398,9 @@ class OptimizationCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         the battery contribution as though it were a site limit.
         """
         fallback_w = max(0.0, float(getattr(action, "power_w", 0.0) or 0.0))
+        configured_cap_w = self._config.max_grid_export_w
+        if configured_cap_w is not None:
+            fallback_w = min(fallback_w, max(0.0, float(configured_cap_w)))
         result = getattr(self, "_last_optimizer_result", None)
         schedule = getattr(result, "schedule", None)
         actions = getattr(schedule, "actions", None) or []
@@ -9407,7 +9410,10 @@ class OptimizationCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             if candidate is action or getattr(candidate, "timestamp", None) == action_timestamp:
                 if index < len(grid_export_w):
                     try:
-                        return max(fallback_w, float(grid_export_w[index]) or 0.0)
+                        solved_w = max(fallback_w, float(grid_export_w[index]) or 0.0)
+                        if configured_cap_w is not None:
+                            solved_w = min(solved_w, max(0.0, float(configured_cap_w)))
+                        return solved_w
                     except (TypeError, ValueError):
                         break
                 break

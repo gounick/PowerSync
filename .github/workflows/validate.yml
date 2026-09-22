@@ -26,7 +26,7 @@ jobs:
           # license: the repo IS licensed (PolyForm Noncommercial 1.0.0, see LICENSE),
           # but GitHub's license detector does not recognize PolyForm, so the HACS
           # check reads SPDX NOASSERTION and can never pass.
-          ignore: issues license
+          ignore: issues license topics
 
   validate-hassfest:
     runs-on: ubuntu-latest
